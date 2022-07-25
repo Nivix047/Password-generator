@@ -8,4 +8,4 @@ Touched base with TA on more advanced topics such as regex. I wanted to make sur
 
 ## Screenshot
 
-![Uploading Screen Shot 2022-07-24 at 10.57.56 PM.png…]()
+<img width="1440" alt="Screen Shot 2022-07-24 at 10 57 56 PM" src="https://user-images.githubusercontent.com/97267318/180708824-9be209ef-af1b-453b-8a85-4f01b64c7212.png">
