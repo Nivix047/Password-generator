@@ -19,7 +19,7 @@ var generatePassword = function () {
   var num = "0123456789";
   var lowerCasePass = "abcdefghijklmnopqrstuvwxyz";
   var upperCasepass = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var specialChar = "`~!@#$%^&*-_+=?";
+  var specialChar = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   var combined = "";
   console.log(combined);
 
@@ -87,7 +87,7 @@ var generatePassword = function () {
     }
   }
   if (confirmSpecial === true) {
-    if (/[`~!@#$%^&*-_+=?]/.test(pass) === false) {
+    if (/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/.test(pass) === false) {
       generatePassword();
     }
   }
