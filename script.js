@@ -11,6 +11,11 @@ function writePassword() {
   passwordText.value = password;
 }
 
+var getRandomChar = function (str) {
+  var randomIndex = Math.floor(Math.random() * str.length);
+  return str.charAt(randomIndex);
+};
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -37,59 +42,35 @@ var generatePassword = function () {
 
   if (confirmNum === true) {
     combined += num;
+    pass += getRandomChar(num);
   }
 
   if (confirmLowers === true) {
     combined += lowerCasePass;
+    pass += getRandomChar(lowerCasePass);
   }
 
   if (confirmUppers === true) {
     combined += upperCasepass;
+    pass += getRandomChar(upperCasepass);
   }
 
   if (confirmSpecial === true) {
     combined += specialChar;
+    pass += getRandomChar(specialChar);
   }
 
-  if (
-    !confirmSpecial &&
-    !confirmLowers &&
-    !confirmUppers &&
-    !confirmNum &&
-    !confirmSpecial
-  ) {
+  if (!confirmSpecial && !confirmLowers && !confirmUppers && !confirmNum) {
     alert(
       "You need to pick at least 1 character type (numbers, uppercase, lowercase, or special)"
     );
     return;
   }
+  var remaining = passLength - pass.length;
 
-  for (i = 1; i <= passLength; i += 1) {
-    var randomIndex = Math.floor(Math.random() * combined.length);
-    var gen = combined.charAt(randomIndex);
-    console.log(gen);
-    pass = pass + gen;
-  }
-  if (confirmLowers === true) {
-    if (/[a-z]/.test(pass) === false) {
-      generatePassword();
-    }
-  }
-  if (confirmUppers === true) {
-    if (/[A-Z]/.test(pass) === false) {
-      generatePassword();
-    }
+  for (var i = 1; i <= remaining; i += 1) {
+    pass += getRandomChar(combined);
   }
 
-  if (confirmNum === true) {
-    if (/[0-9]/.test(pass) === false) {
-      generatePassword();
-    }
-  }
-  if (confirmSpecial === true) {
-    if (/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/.test(pass) === false) {
-      generatePassword();
-    }
-  }
   return pass;
 };
