@@ -26,19 +26,21 @@ var generatePassword = function () {
   var upperCasepass = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var specialChar = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   var combined = "";
-  console.log(combined);
 
   var passLength = prompt(
     "How long do you want your password (min = 8, max = 128)"
   );
+  if (passLength >= 8 && passLength <= 128) {
+    var confirmNum = confirm("Do you want to include numbers?");
 
-  var confirmNum = confirm("Do you want to include numbers?");
+    var confirmLowers = confirm("Do you want to include lower case?");
 
-  var confirmLowers = confirm("Do you want to include lower case?");
+    var confirmUppers = confirm("Do you want to include upper case?");
 
-  var confirmUppers = confirm("Do you want to include upper case?");
-
-  var confirmSpecial = confirm("Do you want to include special characters?");
+    var confirmSpecial = confirm("Do you want to include special characters?");
+  } else alert("Your password must be at least 8 - 128 characters long");
+  {
+  }
 
   if (confirmNum === true) {
     combined += num;
@@ -60,6 +62,14 @@ var generatePassword = function () {
     pass += getRandomChar(specialChar);
   }
 
+  if (passLength < 8) {
+    return;
+  }
+
+  if (passLength > 128) {
+    return;
+  }
+
   if (!confirmSpecial && !confirmLowers && !confirmUppers && !confirmNum) {
     alert(
       "You need to pick at least 1 character type (numbers, uppercase, lowercase, or special)"
@@ -70,7 +80,7 @@ var generatePassword = function () {
 
   for (var i = 1; i <= remaining; i += 1) {
     pass += getRandomChar(combined);
+    console.log(i);
   }
-
   return pass;
 };
